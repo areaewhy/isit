@@ -1,0 +1,430 @@
+[
+  {
+    "WORD": "AA",
+    "DEF": "rough, cindery lava"
+  },
+  {
+    "WORD": "AB",
+    "DEF": "abdominal muscle"
+  },
+  {
+    "WORD": "AD",
+    "DEF": "advertisement"
+  },
+  {
+    "WORD": "AE",
+    "DEF": "one"
+  },
+  {
+    "WORD": "AG",
+    "DEF": "pertaining to agriculture"
+  },
+  {
+    "WORD": "AH",
+    "DEF": "expresses delight"
+  },
+  {
+    "WORD": "AI",
+    "DEF": "three-toed sloth"
+  },
+  {
+    "WORD": "AL",
+    "DEF": "an East Indian tree"
+  },
+  {
+    "WORD": "AM",
+    "DEF": "form of \"to be\""
+  },
+  {
+    "WORD": "AN",
+    "DEF": "indefinite article"
+  },
+  {
+    "WORD": "AR",
+    "DEF": "the letter \"R\""
+  },
+  {
+    "WORD": "AS",
+    "DEF": "to the same degree"
+  },
+  {
+    "WORD": "AT",
+    "DEF": "in the position of"
+  },
+  {
+    "WORD": "AW",
+    "DEF": "expresses protest"
+  },
+  {
+    "WORD": "AX",
+    "DEF": "cutting tool"
+  },
+  {
+    "WORD": "AY",
+    "DEF": "affirmative vote"
+  },
+  {
+    "WORD": "BA",
+    "DEF": "(Egyptian) eternal soul"
+  },
+  {
+    "WORD": "BE",
+    "DEF": "to have actuality"
+  },
+  {
+    "WORD": "BI",
+    "DEF": "a bisexual"
+  },
+  {
+    "WORD": "BO",
+    "DEF": "a pal"
+  },
+  {
+    "WORD": "BY",
+    "DEF": "a side issue"
+  },
+  {
+    "WORD": "DA",
+    "DEF": "dad (British)"
+  },
+  {
+    "WORD": "DE",
+    "DEF": "of; from"
+  },
+  {
+    "WORD": "DO",
+    "DEF": "a tone of the scale"
+  },
+  {
+    "WORD": "ED",
+    "DEF": "pertaining to education"
+  },
+  {
+    "WORD": "EF",
+    "DEF": "the letter \"F\""
+  },
+  {
+    "WORD": "EH",
+    "DEF": "expresses doubt"
+  },
+  {
+    "WORD": "EL",
+    "DEF": "elevated railroad"
+  },
+  {
+    "WORD": "EM",
+    "DEF": "the letter \"M\""
+  },
+  {
+    "WORD": "EN",
+    "DEF": "the letter \"N\""
+  },
+  {
+    "WORD": "ER",
+    "DEF": "expresses hesitation"
+  },
+  {
+    "WORD": "ES",
+    "DEF": "the letter \"S\""
+  },
+  {
+    "WORD": "ET",
+    "DEF": "a past tense of eat"
+  },
+  {
+    "WORD": "EW",
+    "DEF": "express disgust"
+  },
+  {
+    "WORD": "EX",
+    "DEF": "the letter \"X\""
+  },
+  {
+    "WORD": "FA",
+    "DEF": "a tone of the scale"
+  },
+  {
+    "WORD": "FE",
+    "DEF": "a Hebrew letter"
+  },
+  {
+    "WORD": "GI",
+    "DEF": "a garment worn in judo"
+  },
+  {
+    "WORD": "GO",
+    "DEF": "to move along"
+  },
+  {
+    "WORD": "HA",
+    "DEF": "sound of surprise"
+  },
+  {
+    "WORD": "HE",
+    "DEF": "male person"
+  },
+  {
+    "WORD": "HI",
+    "DEF": "used as a greeting"
+  },
+  {
+    "WORD": "HM",
+    "DEF": "expresses consideration"
+  },
+  {
+    "WORD": "HO",
+    "DEF": "expresses surprise"
+  },
+  {
+    "WORD": "ID",
+    "DEF": "part of the psyche"
+  },
+  {
+    "WORD": "IF",
+    "DEF": "a possibility"
+  },
+  {
+    "WORD": "IN",
+    "DEF": "to harvest"
+  },
+  {
+    "WORD": "IS",
+    "DEF": "form of \"to be\""
+  },
+  {
+    "WORD": "IT",
+    "DEF": "neuter pronoun"
+  },
+  {
+    "WORD": "JO",
+    "DEF": "sweetheart"
+  },
+  {
+    "WORD": "KA",
+    "DEF": "(Egyptian) spiritual self"
+  },
+  {
+    "WORD": "KI",
+    "DEF": "inner strength, life energy"
+  },
+  {
+    "WORD": "LA",
+    "DEF": "tone of the scale"
+  },
+  {
+    "WORD": "LI",
+    "DEF": "Chinese unit of distance"
+  },
+  {
+    "WORD": "LO",
+    "DEF": "expresses surprise"
+  },
+  {
+    "WORD": "MA",
+    "DEF": "mother"
+  },
+  {
+    "WORD": "ME",
+    "DEF": "personal pronoun"
+  },
+  {
+    "WORD": "MI",
+    "DEF": "tone of the scale"
+  },
+  {
+    "WORD": "MM",
+    "DEF": "expresses assent"
+  },
+  {
+    "WORD": "MO",
+    "DEF": "a moment"
+  },
+  {
+    "WORD": "MU",
+    "DEF": "a Greek letter"
+  },
+  {
+    "WORD": "MY",
+    "DEF": "possessive pronoun"
+  },
+  {
+    "WORD": "NA",
+    "DEF": "no; not"
+  },
+  {
+    "WORD": "NE",
+    "DEF": "born with the name of"
+  },
+  {
+    "WORD": "NO",
+    "DEF": "a negative reply"
+  },
+  {
+    "WORD": "NU",
+    "DEF": "a Greek letter"
+  },
+  {
+    "WORD": "OD",
+    "DEF": "a hypothetical force"
+  },
+  {
+    "WORD": "OE",
+    "DEF": "Faeroe Islands whirlwind"
+  },
+  {
+    "WORD": "OF",
+    "DEF": "coming from"
+  },
+  {
+    "WORD": "OH",
+    "DEF": "to exclaim in surprise"
+  },
+  {
+    "WORD": "OI",
+    "DEF": "express dismay (oy)"
+  },
+  {
+    "WORD": "OK",
+    "DEF": "all right"
+  },
+  {
+    "WORD": "OM",
+    "DEF": "a mantra"
+  },
+  {
+    "WORD": "ON",
+    "DEF": "batsman's side of wicket"
+  },
+  {
+    "WORD": "OP",
+    "DEF": "a style of abstract art"
+  },
+  {
+    "WORD": "OR",
+    "DEF": "the heraldic color gold"
+  },
+  {
+    "WORD": "OS",
+    "DEF": "a bone"
+  },
+  {
+    "WORD": "OW",
+    "DEF": "expresses pain"
+  },
+  {
+    "WORD": "OX",
+    "DEF": "a clumsy person"
+  },
+  {
+    "WORD": "OY",
+    "DEF": "expresses dismay"
+  },
+  {
+    "WORD": "PA",
+    "DEF": "father"
+  },
+  {
+    "WORD": "PE",
+    "DEF": "a Hebrew letter"
+  },
+  {
+    "WORD": "PI",
+    "DEF": "a Greek letter"
+  },
+  {
+    "WORD": "PO",
+    "DEF": "a chamber pot"
+  },
+  {
+    "WORD": "QI",
+    "DEF": "circulating life energy"
+  },
+  {
+    "WORD": "RE",
+    "DEF": "a tone of the scale"
+  },
+  {
+    "WORD": "SH",
+    "DEF": "urges silence"
+  },
+  {
+    "WORD": "SI",
+    "DEF": "ti (a tone of the scale)"
+  },
+  {
+    "WORD": "SO",
+    "DEF": "sol (a tone of the scale)"
+  },
+  {
+    "WORD": "TA",
+    "DEF": "expression of gratitude"
+  },
+  {
+    "WORD": "TE",
+    "DEF": "a tonoe of the scale (ti)"
+  },
+  {
+    "WORD": "TI",
+    "DEF": "a tone of the scale"
+  },
+  {
+    "WORD": "TO",
+    "DEF": "in the direction of"
+  },
+  {
+    "WORD": "UH",
+    "DEF": "expresses hesitation"
+  },
+  {
+    "WORD": "UM",
+    "DEF": "indicates hesitation"
+  },
+  {
+    "WORD": "UN",
+    "DEF": "one"
+  },
+  {
+    "WORD": "UP",
+    "DEF": "to raise"
+  },
+  {
+    "WORD": "US",
+    "DEF": "personal pronoun"
+  },
+  {
+    "WORD": "UT",
+    "DEF": "musical tone (is now DO)"
+  },
+  {
+    "WORD": "WE",
+    "DEF": "pronoun"
+  },
+  {
+    "WORD": "WO",
+    "DEF": "woe"
+  },
+  {
+    "WORD": "XI",
+    "DEF": "a Greek letter"
+  },
+  {
+    "WORD": "XU",
+    "DEF": "monetary unit of Vietnam"
+  },
+  {
+    "WORD": "YA",
+    "DEF": "you"
+  },
+  {
+    "WORD": "YE",
+    "DEF": "you"
+  },
+  {
+    "WORD": "YO",
+    "DEF": "used to call attention"
+  },
+  {
+    "WORD": "ZA",
+    "DEF": "slang word for pizza"
+  }
+]

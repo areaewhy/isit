@@ -76,6 +76,7 @@
 
     <button class="generate" onclick="generate()">Try Another</button>
   </body>
+
   <template id="chooser">
     <button onclick="it_is(true)">It Is</button>
     <button onclick="it_is(false)">It's Not</button>
@@ -89,88 +90,7 @@
     <div class="load-bar"></div>
   </template>
 
-  <script>
-    let retryTimeMs = 3000;
-    let retryTimer = null;
-
-    const alphabet = Array.from("abcdefghijklmnopqrstuvwxyz");
-
-    const letters = (() => {
-      // make vowels more common!
-      let vowels = Array.from("aeiouy".repeat(10));
-      return alphabet.concat(vowels);
-    })();
-
-    const target = document.querySelector("#result");
-    const guess_result = document.querySelector("#guess");
-
-    var acceptable = [];
-
-    function random() {
-      const ix = Math.floor(Math.random() * letters.length);
-      return letters[ix];
-    }
-
-    function generate() {
-      target.innerHTML = `${random().toUpperCase()}${random()}`;
-      //target.innerHTML = "Ax";
-
-      const buttons = document
-        .querySelector("#chooser")
-        .content.cloneNode(true);
-      guess_result.innerHTML = "";
-      guess_result.appendChild(buttons);
-
-      clearInterval(retryTimer);
-    }
-
-    function it_is(guess) {
-      const word = target.innerHTML.toUpperCase();
-      const match = acceptable.filter((a) => a.WORD == word);
-      const is_a_word = match.length > 0;
-      console.log(match);
-
-      const definition = is_a_word ? match[0].DEF : null;
-
-      const message = `"${word}" is ${is_a_word ? "" : "NOT"} a word!`;
-      const outcome = `You're ${is_a_word == guess ? "RIGHT!" : "WRONG!"}`;
-
-      guess_result.innerHTML = "";
-      if (is_a_word == guess) {
-        guess_result.setAttribute("correct", is_a_word);
-      } else {
-        guess_result.setAttribute("wrong", is_a_word);
-      }
-
-      const result = document
-        .querySelector("#guess-result-word")
-        .content.cloneNode(true);
-      result.querySelector(".outcome").innerText = outcome;
-
-      if (is_a_word) {
-        result.querySelector(".word").innerText = word;
-      }
-
-      result.querySelector(".definition").innerText = definition ?? message;
-
-      guess_result.appendChild(result);
-
-      guess_result.appendChild(buildLoader());
-
-      retryTimer = setTimeout(generate, retryTimeMs);
-    }
-
-    function buildLoader() {
-      var d = document.querySelector("#loader").content.cloneNode(true);
-      d.querySelector(".load-bar").style.animationDuration = retryTimeMs + "ms";
-      return d;
-    }
-
-    async function startup() {
-      acceptable = await fetch("/words.json").then((t) => t.json());
-      generate();
-    }
-
-    startup();
+  <script type="module" src="main.js">
+    // import acceptable from "./resources/word
   </script>
 </html>
