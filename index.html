@@ -15,6 +15,7 @@
       font-size: 2em;
       text-align: center;
       box-shadow: 1px 1px 1px;
+      padding: 30px;
     }
     #result {
       padding: 1.4em;
@@ -70,12 +71,21 @@
         width: 0%;
       }
     }
+
+    p.intro {
+      font-size: 0.6em;
+      font-style: italic;
+      margin: 0;
+      padding: 0;
+      margin-top: 10px;
+    }
   </style>
   <body>
+    <p class="intro">IS IT a valid Scrabble word?</p>
     <div id="result"></div>
     <div id="guess"></div>
 
-    <button class="generate" onclick="generate()">Try Another</button>
+    <button class="generate" onclick="generate()">Gimme Another</button>
   </body>
 
   <template id="chooser">
