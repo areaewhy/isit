@@ -1,101 +1,173 @@
 <html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
   <style>
     body {
-    width:40vw;
-    min-width:200px;
-    border:1px solid #131313;
-    margin:0 auto;
-    margin-top:40px;
-    margin-bottom:40px;
-    font-size:2em;
-    text-align:center;
-    box-shadow:1px 1px 1px 
-}
-#result {
-    padding:2em;
-}
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+      border: 1px solid #131313;
+      margin: 0 auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      font-size: 2em;
+      text-align: center;
+      box-shadow: 1px 1px 1px;
+    }
+    #result {
+      padding: 1.4em;
+    }
 
-#guess {
-    margin:20px;
-}
+    #guess[correct] {
+      color: green;
+    }
+    #guess[wrong] {
+      color: rgb(211, 0, 0);
+    }
 
-#guess button {
-    width:100px;
-    font-size:.5em;
-    background:#ff9b9b;
-    margin-left:20px;
-    padding:20px;
-    border-radius:8px;
-}
-#guess button:first-child {
-    background:#91ff91;
-}
+    #guess {
+      margin: 20px;
+    }
 
+    #guess button {
+      width: 100px;
+      font-size: 0.5em;
+      background: #ff9b9b;
+      margin-left: 20px;
+      padding: 20px;
+      border-radius: 8px;
+    }
+    #guess button:first-child {
+      background: #91ff91;
+    }
+    .word,
+    .definition {
+      font-size: 0.8em;
+    }
+    .definition {
+      font-style: italic;
+    }
+    .load-bar {
+      background: red;
+      height: 1px;
+      width: 100%;
+      animation-name: shrink;
+      animation-duration: 4s;
+      animation-timing-function: linear;
+    }
+
+    .generate {
+      margin: auto;
+    }
+
+    @keyframes shrink {
+      0% {
+        width: 100%;
+      }
+      100% {
+        width: 0%;
+      }
+    }
   </style>
   <body>
     <div id="result"></div>
-<div id="guess">
+    <div id="guess"></div>
 
-</div>
-    
-
-    <button onclick="generate()">Generate</button>
-    
+    <button class="generate" onclick="generate()">Try Another</button>
   </body>
+  <template id="chooser">
+    <button onclick="it_is(true)">It Is</button>
+    <button onclick="it_is(false)">It's Not</button>
+  </template>
+  <template id="guess-result-word">
+    <p class="outcome"></p>
+    <div class="word"></div>
+    <div class="definition"></div>
+  </template>
+  <template id="loader">
+    <div class="load-bar"></div>
+  </template>
+
   <script>
-    const letters = Array.from("abcdefghijklmnopqrstuvwxyz");
-    const target = document.querySelector('#result');
-    const guess_result = document.querySelector('#guess');
+    let retryTimeMs = 3000;
 
-    const acceptable = 
-    `AA, AB, AD, AE, AG, AH, AI, AL, AM, AN, AR, AS, AT, AW, AX, AY
-BA, BE, BI, BO, BY
-DA, DE, DO
-ED, EF, EH, EL, EM, EN, ER, ES, ET, EW, EX
-FA, FE
-GI, GO
-HA, HE, HI, HM, HO
-ID, IF, IN, IS, IT
-JO
-KA, KI
-LA, LI, LO
-MA, ME, MI, MM, MO, MU, MY
-NA, NE, NO, NU
-OD, OE, OF, OH, OI, OK, OM, ON, OP, OR, OS, OW, OX, OY
-PA, PE, PI, PO
-QI
-RE
-SH, SI, SO
-TA, TE, TI, TO
-UH, UM, UN, UP, US, UT
-WE, WO
-XI, XU
-YA, YE, YO
-ZA`.replaceAll('\r',', ').replaceAll('\n',', ').split(', ');
+    const alphabet = Array.from("abcdefghijklmnopqrstuvwxyz");
 
+    const letters = (() => {
+      // make vowels more common!
+      let vowels = Array.from("aeiouy".repeat(10));
+      return alphabet.concat(vowels);
+    })();
 
+    const target = document.querySelector("#result");
+    const guess_result = document.querySelector("#guess");
 
-    function random(){
-      const ix = Math.floor(Math.random()*letters.length);
+    var acceptable = [];
+
+    function random() {
+      const ix = Math.floor(Math.random() * letters.length);
       return letters[ix];
     }
 
     function generate() {
-      target.innerHTML = `${random().toUpperCase()}${random()}`
-      guess_result.innerHTML = `
-      <button onclick="it_is(true)">It Is</button>
-      <button onclick="it_is(false)">It's Not</button>
-    `
+      target.innerHTML = `${random().toUpperCase()}${random()}`;
+      //target.innerHTML = "Ax";
+
+      const buttons = document
+        .querySelector("#chooser")
+        .content.cloneNode(true);
+      guess_result.innerHTML = "";
+      guess_result.appendChild(buttons);
     }
 
-    function it_is(guess){
+    function it_is(guess) {
       const word = target.innerHTML.toUpperCase();
-      const is_a_word = acceptable.indexOf(word) > -1;
+      const match = acceptable.filter((a) => a.WORD == word);
+      const is_a_word = match.length > 0;
+      console.log(match);
 
-      guess_result.innerHTML = `"${word}" is ${is_a_word ? '' : 'NOT'} a word!\n You're ${is_a_word == guess ? 'RIGHT!' : 'WRONG!'}`;
-      
+      const definition = is_a_word ? match[0].DEF : null;
+
+      const message = `"${word}" is ${is_a_word ? "" : "NOT"} a word!`;
+      const outcome = `You're ${is_a_word == guess ? "RIGHT!" : "WRONG!"}`;
+
+      guess_result.innerHTML = "";
+      if (is_a_word == guess) {
+        guess_result.setAttribute("correct", is_a_word);
+      } else {
+        guess_result.setAttribute("wrong", is_a_word);
+      }
+
+      const result = document
+        .querySelector("#guess-result-word")
+        .content.cloneNode(true);
+      result.querySelector(".outcome").innerText = outcome;
+
+      if (is_a_word) {
+        result.querySelector(".word").innerText = word;
+      }
+
+      result.querySelector(".definition").innerText = definition ?? message;
+
+      guess_result.appendChild(result);
+
+      guess_result.appendChild(buildLoader());
+
+      setTimeout(generate, retryTimeMs);
     }
-    generate();
-  </script>
 
+    function buildLoader() {
+      var d = document.querySelector("#loader").content.cloneNode(true);
+      d.querySelector(".load-bar").style.animationDuration = retryTimeMs + "ms";
+      return d;
+    }
+
+    async function startup() {
+      acceptable = await fetch("/words.json").then((t) => t.json());
+      generate();
+    }
+
+    startup();
+  </script>
 </html>
