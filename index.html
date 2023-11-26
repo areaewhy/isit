@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <div id="result"></div>
+    <button onclick="generate">Generate</button>
+  </body>
+  <script>
+    const letters = Array.from("abcdefghijklmnopqrstuvwxyz");
+    const target = document.querySelector('#result');
+
+    function random(){
+      const ix = Math.floor(Math.random()*letters.length);
+      return letters[ix];
+    }
+
+    function generate() {
+      target.innerHTML = `${random()}${random()}`
+    }
+
+    generate();
+  </script>
+</html>
