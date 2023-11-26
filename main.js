@@ -66,9 +66,9 @@ function it_is(guess) {
 
   guess_result.appendChild(result);
 
-  guess_result.appendChild(buildLoader());
+  //guess_result.appendChild(buildLoader());
 
-  retryTimer = setTimeout(generate, retryTimeMs);
+  //retryTimer = setTimeout(generate, retryTimeMs);
 }
 
 function buildLoader() {
