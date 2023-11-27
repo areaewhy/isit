@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="game">
+      <div style="font-size: 0.5em; margin-bottom: 8px">
+        What two-letter word means...
+      </div>
+      <div class="definition"></div>
+
+      <div>
+        <label for="word-guess" style="font-size: 0.6em">Guess:</label>
+        <input id="word-guess" maxlength="2" type="text" />
+      </div>
+
+      <div
+        id="word-guess-result"
+        style="font-size: 0.5em; margin-top: 10px"
+      ></div>
+      <button
+        id="reset"
+        style="
+          margin: auto;
+          margin-top: 15px;
+          font-size: 0.6em;
+          border-radius: 8px;
+          padding: 8px;
+        "
+      >
+        Try another
+      </button>
+    </div>
+  </body>
+  <script type="module" src="guessit-main.js"></script>
+</html>
