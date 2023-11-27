@@ -1,0 +1,78 @@
+.game {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  border: 1px solid #131313;
+  margin: 0 auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 2em;
+  text-align: center;
+  box-shadow: 1px 1px 1px;
+  padding: 30px;
+}
+#result {
+  padding: 1.4em;
+}
+
+#guess[right="true"] > .outcome {
+  color: green;
+}
+#guess[right="false"] > .outcome {
+  color: rgb(211, 0, 0);
+}
+
+#guess {
+  margin: 20px;
+}
+
+#guess button {
+  width: 100px;
+  font-size: 0.5em;
+  background: #ff9b9b;
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+#guess button:first-child {
+  background: #91ff91;
+}
+.word,
+.definition {
+  font-size: 0.8em;
+}
+.word {
+  margin-top: 5px;
+}
+.definition {
+  font-style: italic;
+}
+.load-bar {
+  background: red;
+  height: 1px;
+  width: 100%;
+  animation-name: shrink;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+}
+
+.generate {
+  margin: auto;
+}
+
+@keyframes shrink {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0%;
+  }
+}
+
+p.intro {
+  font-size: 0.6em;
+  font-style: italic;
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+}

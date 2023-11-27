@@ -47,11 +47,8 @@ function it_is(guess) {
   const outcome = `You're ${is_a_word == guess ? "RIGHT!" : "WRONG!"}`;
 
   guess_result.innerHTML = "";
-  if (is_a_word == guess) {
-    guess_result.setAttribute("correct", is_a_word);
-  } else {
-    guess_result.setAttribute("wrong", is_a_word);
-  }
+  // for color styling:
+  guess_result.setAttribute("right", is_a_word == guess);
 
   const result = document
     .querySelector("#guess-result-word")
@@ -66,9 +63,11 @@ function it_is(guess) {
 
   guess_result.appendChild(result);
 
-  //guess_result.appendChild(buildLoader());
+  if (document.querySelector("#auto-load").checked) {
+    guess_result.appendChild(buildLoader());
 
-  //retryTimer = setTimeout(generate, retryTimeMs);
+    retryTimer = setTimeout(generate, retryTimeMs);
+  }
 }
 
 function buildLoader() {

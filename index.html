@@ -2,98 +2,28 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/resources/styles.css" rel="stylesheet" />
   </head>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      max-width: 400px;
-      border: 1px solid #131313;
-      margin: 0 auto;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      font-size: 2em;
-      text-align: center;
-      box-shadow: 1px 1px 1px;
-      padding: 30px;
-    }
-    #result {
-      padding: 1.4em;
-    }
-
-    #guess[correct] {
-      color: green;
-    }
-    #guess[wrong] {
-      color: rgb(211, 0, 0);
-    }
-
-    #guess {
-      margin: 20px;
-    }
-
-    #guess button {
-      width: 100px;
-      font-size: 0.5em;
-      background: #ff9b9b;
-      margin-left: 20px;
-      padding: 20px;
-      border-radius: 8px;
-    }
-    #guess button:first-child {
-      background: #91ff91;
-    }
-    .word,
-    .definition {
-      font-size: 0.8em;
-    }
-    .definition {
-      font-style: italic;
-    }
-    .load-bar {
-      background: red;
-      height: 1px;
-      width: 100%;
-      animation-name: shrink;
-      animation-duration: 4s;
-      animation-timing-function: linear;
-    }
-
-    .generate {
-      margin: auto;
-    }
-
-    @keyframes shrink {
-      0% {
-        width: 100%;
-      }
-      100% {
-        width: 0%;
-      }
-    }
-
-    p.intro {
-      font-size: 0.6em;
-      font-style: italic;
-      margin: 0;
-      padding: 0;
-      margin-top: 10px;
-    }
-  </style>
   <body>
-    <p class="intro">IS IT a valid Scrabble word?</p>
-    <div id="result"></div>
-    <div id="guess"></div>
+    <div class="game">
+      <p class="intro">IS IT a valid Scrabble word?</p>
+      <div id="result"></div>
+      <div id="guess"></div>
 
-    <button class="generate" onclick="generate()">Gimme Another</button>
+      <button class="generate">Gimme Another</button>
+      <div>
+        <label for="auto-load" style="font-size: 0.4em">Auto Load</label>
+        <input type="checkbox" id="auto-load" />
+      </div>
+    </div>
   </body>
 
   <template id="chooser">
-    <button onclick="it_is(true)">It Is</button>
-    <button onclick="it_is(false)">It's Not</button>
+    <button>It Is</button>
+    <button>It's Not</button>
   </template>
   <template id="guess-result-word">
-    <p class="outcome"></p>
+    <div class="outcome"></div>
     <div class="word"></div>
     <div class="definition"></div>
   </template>
