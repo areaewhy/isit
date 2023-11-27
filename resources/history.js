@@ -2,42 +2,47 @@
  * param {string} word
  * param {boolean} correct
  */
-export function addWord(word, correct) {
-  cookieStore.get("word-list").then((t) => {
-    let words = JSON.parse(t.value);
-    let match = words.filter((a) => a.WORD == word.toUpperCase());
+export async function addWord(word, correct) {
+  const t = await cookieStore.get("word-list");
 
-    // update
-    if (match.length) {
-      match[0].C++;
-      match[0].R += correct ? 1 : 0;
-      match[0].L = Date.now();
-    }
-    // add
-    else {
-      var n = {
-        W: word,
-        C: 1,
-        R: correct ? 1 : 0,
-        F: Date.now(),
-        L: Date.now(),
-      };
+  let words = JSON.parse(t.value);
+  let match = words.filter((a) => a.W == word.toUpperCase());
 
-      words.push(n);
-    }
+  // update
+  if (match.length) {
+    match[0].C++;
+    match[0].R += correct ? 1 : 0;
+    match[0].L = Date.now();
+  }
+  // add
+  else {
+    var n = {
+      W: word.toUpperCase(),
+      C: 1,
+      R: correct ? 1 : 0,
+      F: Date.now(),
+      L: Date.now(),
+    };
 
-    // write
-    cookieStore.set("word-list", JSON.stringify(words));
-  });
+    words.push(n);
+  }
+
+  // write
+  await cookieStore.set("word-list", JSON.stringify(words));
 }
 
-export function getAll(callback) {
-  cookieStore.get("word-list").then((t) => callback(t));
+export async function getAll() {
+  const cookie = await cookieStore.get("word-list");
+  return JSON.parse(cookie.value);
 }
 
-function init() {
+export function reset() {
+  init(true);
+}
+
+function init(reset) {
   getAll((x) => {
-    if (x == null) cookieStore.set("word-list", JSON.stringify([]));
+    if (x == null || reset) cookieStore.set("word-list", JSON.stringify([]));
   });
 }
 

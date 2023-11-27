@@ -22,7 +22,7 @@ function random() {
 
 function generate() {
   target.innerHTML = `${random().toUpperCase()}${random()}`;
-  //target.innerHTML = "Ax";
+  target.innerHTML = "Ax";
 
   const buttons = document.querySelector("#chooser").content.cloneNode(true);
   guess_result.innerHTML = "";
@@ -40,7 +40,6 @@ function it_is(guess) {
   const word = target.innerHTML.toUpperCase();
   const match = acceptable.filter((a) => a.WORD == word);
   const is_a_word = match.length > 0;
-  console.log(match);
 
   const definition = is_a_word ? match[0].DEF : null;
 
@@ -65,7 +64,7 @@ function it_is(guess) {
     retryTimer = setTimeout(generate, retryTimeMs);
   }
 
-  addWord(word, is_a_word == guess);
+  addWord(word, is_a_word == guess).then(() => refreshHistory());
 }
 
 function buildResult(word, outcome, definition) {
@@ -100,6 +99,30 @@ function search() {
       targ.appendChild(result);
     }
   }
+}
+
+function refreshHistory() {
+  // this is gross, don't bother yet.
+  return;
+
+  const targ = document.querySelector("#history");
+  targ.innerHTML = "";
+
+  getAll().then((a) => {
+    a.sort((a, b) => (a.L < b.L ? 1 : -1))
+      .slice(0, 5)
+      .map((w) => {
+        const template = document
+          .querySelector("#history-template")
+          .content.cloneNode(true);
+
+        template.querySelector(".word").innerText = w.W;
+        template.querySelector(".seen").innerText = w.C;
+        template.querySelector(".accuracy").innerText = w.R / (w.C * 1.0);
+
+        targ.appendChild(template);
+      });
+  });
 }
 
 function Setup() {
