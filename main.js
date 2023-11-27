@@ -22,7 +22,7 @@ function random() {
 
 function generate() {
   target.innerHTML = `${random().toUpperCase()}${random()}`;
-  target.innerHTML = "Ax";
+  //target.innerHTML = "Ax";
 
   const buttons = document.querySelector("#chooser").content.cloneNode(true);
   guess_result.innerHTML = "";
