@@ -50,16 +50,11 @@ function it_is(guess) {
   // for color styling:
   guess_result.setAttribute("right", is_a_word == guess);
 
-  const result = document
-    .querySelector("#guess-result-word")
-    .content.cloneNode(true);
-  result.querySelector(".outcome").innerText = outcome;
-
-  if (is_a_word) {
-    result.querySelector(".word").innerText = word;
-  }
-
-  result.querySelector(".definition").innerText = definition ?? message;
+  const result = buildResult(
+    is_a_word ? word : "",
+    outcome,
+    definition ?? message
+  );
 
   guess_result.appendChild(result);
 
@@ -70,14 +65,43 @@ function it_is(guess) {
   }
 }
 
+function buildResult(word, outcome, definition) {
+  const result = document
+    .querySelector("#guess-result-word")
+    .content.cloneNode(true);
+
+  result.querySelector(".outcome").innerText = outcome;
+  result.querySelector(".definition").innerText = definition;
+  result.querySelector(".word").innerText = word;
+
+  return result;
+}
+
 function buildLoader() {
   var d = document.querySelector("#loader").content.cloneNode(true);
   d.querySelector(".load-bar").style.animationDuration = retryTimeMs + "ms";
   return d;
 }
 
+function search() {
+  const word = document.querySelector("#search").value;
+  const match = acceptable.filter((a) =>
+    a.WORD.toUpperCase().startsWith(word.toUpperCase())
+  );
+  const targ = document.querySelector(".search-result");
+  targ.innerHTML = "";
+
+  if (word > "") {
+    for (var m of match) {
+      var result = buildResult(m.WORD, "", m.DEF);
+      targ.appendChild(result);
+    }
+  }
+}
+
 function Setup() {
   document.querySelector(".generate").addEventListener("click", generate);
+  document.querySelector("#search").addEventListener("keyup", search);
 }
 
 Setup();
