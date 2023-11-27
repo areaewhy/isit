@@ -1,4 +1,5 @@
 import acceptable from "./resources/words.json" assert { type: "json" };
+import { getAll, addWord } from "./resources/history.js";
 
 let retryTimeMs = 3000;
 let retryTimer = null;
@@ -63,6 +64,8 @@ function it_is(guess) {
 
     retryTimer = setTimeout(generate, retryTimeMs);
   }
+
+  addWord(word, is_a_word == guess);
 }
 
 function buildResult(word, outcome, definition) {

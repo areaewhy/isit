@@ -11,6 +11,13 @@
   box-shadow: 1px 1px 1px;
   padding: 30px;
 }
+
+.resources {
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
 #result {
   padding: 1.4em;
 }
