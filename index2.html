@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      type="module"
+      src="./res/main.js"
+      onload="console.log(event)"
+    ></script>
+    <style>
+      [hide] {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section
+      x-data="{
+        words: [],
+        word: '',
+        guess: '',
+        RIGHT: false
+      }"
+      x-init="words = await fetch('./../resources/words.json').then(t => t.json()).then(j => j)"
+      x-effect="word = randomWord(words)"
+      x-effect="RIGHT = word?.WORD === guess"
+    >
+      <div x-text="word?.DEF"></div>
+      <div x-text="word?.WORD"></div>
+      <div x-text="RIGHT"></div>
+      <input x-model="guess" x-bind:maxlength="word?.WORD.length" type="text" />
+      <template
+        x-if="guess.length > 1 && RIGHT"
+        x-init="$watch('RIGHT', value => console.log(value))"
+      >
+        <span>yo</span>
+      </template>
+      <template x-if="guess.length > 1 && !RIGHT">
+        <span>NO</span>
+      </template>
+
+      <!-- <template x-for="word in words">
+        <div x-text="word.WORD"></div>
+      </template> -->
+    </section>
+
+    <script>
+      function randomWord(words) {
+        const ix = Math.floor(Math.random() * words.length);
+        return words && words[ix];
+      }
+    </script>
+  </body>
+</html>

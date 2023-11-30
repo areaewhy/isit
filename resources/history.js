@@ -3,9 +3,9 @@
  * param {boolean} correct
  */
 export async function addWord(word, correct) {
-  const t = await cookieStore.get("word-list");
+  const t = localStorage.getItem("word-list");
+  let words = JSON.parse(t);
 
-  let words = JSON.parse(t.value);
   let match = words.filter((a) => a.W == word.toUpperCase());
 
   // update
@@ -28,12 +28,11 @@ export async function addWord(word, correct) {
   }
 
   // write
-  await cookieStore.set("word-list", JSON.stringify(words));
+  await localStorage.setItem("word-list", JSON.stringify(words));
 }
 
 export async function getAll() {
-  const cookie = await cookieStore.get("word-list");
-  return JSON.parse(cookie.value);
+  return JSON.parse(localStorage.getItem("word-list"));
 }
 
 export function reset() {
@@ -42,7 +41,7 @@ export function reset() {
 
 function init(reset) {
   getAll((x) => {
-    if (x == null || reset) cookieStore.set("word-list", JSON.stringify([]));
+    if (x == null || reset) cookieStore.setItem("word-list", "[]");
   });
 }
 
