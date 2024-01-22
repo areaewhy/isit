@@ -1,6 +1,6 @@
-//import acceptable from "./resources/words.json" assert { type: "json" };
+import acceptable from "./resources/words.json" assert { type: "json" };
 import { getAll, addWord } from "./resources/history.js";
-const { default: acceptable } = await import("./resources/words.json", { assert: { type: "json" } })
+//const { default: acceptable } = await import("./resources/words.json", { assert: { type: "json" } })
 let retryTimeMs = 3000;
 let retryTimer = null;
 
