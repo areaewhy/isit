@@ -1,4 +1,8 @@
-import acceptable from "./words.json" assert { type: "json" };
+let acceptable = {};
+(()=> fetch('./words.json').then(t => t.json()).then(j => {
+  acceptable = j;
+  reset();
+}))();
 
 const maxGuesses = 5;
 let guessCount = maxGuesses;
@@ -91,4 +95,4 @@ function Setup() {
 }
 
 Setup();
-reset();
+//reset();
