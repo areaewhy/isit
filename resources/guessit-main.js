@@ -30,6 +30,8 @@ function reset() {
 
   document.querySelector("#word-guess-result").innerHTML = "";
   document.querySelector("#word-guess").value = "";
+  
+  document.getElementById('word-guess').focus();
 }
 
 /**
@@ -62,7 +64,7 @@ function submitGuess(event) {
 
   const match = acceptable.filter((a) => a.DEF == definition());
 
-  if (guessCount < 0) {
+  if (guessCount <= 0) {
     result.innerHTML = `Fail! <div class="failed">${match[0].WORD}</div>`;
     return;
   }
