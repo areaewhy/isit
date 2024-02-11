@@ -1,5 +1,8 @@
 let acceptable = {};
 (() => fetch('./resources/words.json').then(t => t.json()).then(j => acceptable = j))();
+const STATS_KEY = 'STATS';
+
+localStorage.setItem(STATS_KEY, JSON.stringify({ 'count':0, 'correct':0}));
 
 let retryTimeMs = 3000;
 let retryTimer = null;
@@ -36,6 +39,7 @@ function generate() {
   clearInterval(retryTimer);
 }
 
+
 function it_is(guess) {
   const word = target.innerHTML.toUpperCase();
   const match = acceptable.filter((a) => a.WORD == word);
@@ -64,7 +68,7 @@ function it_is(guess) {
     retryTimer = setTimeout(generate, retryTimeMs);
   }
 
-  addWord(word, is_a_word == guess).then(() => refreshHistory());
+  addWord(word, is_a_word == guess);
 }
 
 function buildResult(word, outcome, definition) {
@@ -104,6 +108,24 @@ function search() {
 function Setup() {
   document.querySelector(".generate").addEventListener("click", generate);
   document.querySelector("#search").addEventListener("keyup", search);
+}
+
+async function addWord(word, correct){
+  let x = localStorage.getItem(STATS_KEY);
+  let y = JSON.parse(x);
+  y.count += 1;
+  if (correct){
+    y.correct += 1;
+  }
+  refreshHistory(y.count, y.correct);
+
+  localStorage.setItem(STATS_KEY, JSON.stringify(y));
+  
+}
+
+function refreshHistory(count, correct){
+  let content = document.querySelector('#accuracy');
+  content.innerHTML = `${correct} / ${count}`
 }
 
 Setup();

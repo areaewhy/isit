@@ -83,3 +83,7 @@ p.intro {
   padding: 0;
   margin-top: 10px;
 }
+
+#accuracy {
+  font-size:.5em;
+}
