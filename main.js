@@ -1,6 +1,6 @@
-//import acceptable from "./resources/words.json" assert { type: "json" };
-import { getAll, addWord } from "./resources/history.js";
-const { default: acceptable } = await import("./resources/words.json", { assert: { type: "json" } })
+let acceptable = {};
+(() => fetch('./resources/words.json').then(t => t.json()).then(j => acceptable = j))();
+
 let retryTimeMs = 3000;
 let retryTimer = null;
 
@@ -99,30 +99,6 @@ function search() {
       targ.appendChild(result);
     }
   }
-}
-
-function refreshHistory() {
-  // this is gross, don't bother yet.
-  return;
-
-  const targ = document.querySelector("#history");
-  targ.innerHTML = "";
-
-  getAll().then((a) => {
-    a.sort((a, b) => (a.L < b.L ? 1 : -1))
-      .slice(0, 5)
-      .map((w) => {
-        const template = document
-          .querySelector("#history-template")
-          .content.cloneNode(true);
-
-        template.querySelector(".word").innerText = w.W;
-        template.querySelector(".seen").innerText = w.C;
-        template.querySelector(".accuracy").innerText = w.R / (w.C * 1.0);
-
-        targ.appendChild(template);
-      });
-  });
 }
 
 function Setup() {
